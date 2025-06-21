@@ -26,7 +26,7 @@ Upload your own CSV file and instantly filter, visualize, and summarize your dat
 
 1. **Clone the repository**
     ```bash
-    git clone <your-repo-url>
+    git clone https://github.com/AbdullahSaif-code/Universal-EDA-Explorer.git
     cd Netflix_EDA_Flask_app
     ```
 
