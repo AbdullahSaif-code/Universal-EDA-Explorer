@@ -34,10 +34,6 @@ st.title("🔎 Universal EDA Explorer")
 
 columns = df.columns.tolist()
 
-# Data Preview
-with st.expander("🔍 Preview Data"):
-    st.dataframe(df.head(20))
-
 # Dynamically build sidebar filters based on available columns
 st.sidebar.header("Filter Data")
 filter_values = {}
@@ -63,16 +59,6 @@ for col, selected in filter_values.items():
 if filtered_df.empty:
     st.warning("No data available for the selected filters. Please adjust your filters.")
     st.stop()
-
-# Download filtered data
-csv_buffer = io.StringIO()
-filtered_df.to_csv(csv_buffer, index=False)
-st.download_button(
-    label="⬇️ Download Filtered Data as CSV",
-    data=csv_buffer.getvalue(),
-    file_name="filtered_data.csv",
-    mime="text/csv"
-)
 
 # Add help/documentation
 with st.expander("ℹ️ How to use this dashboard", expanded=False):
@@ -222,3 +208,17 @@ else:
             file_name="plot.html",
             mime="text/html"
         )
+
+# --- Move Preview Data and Download Filtered Data as CSV to the end ---
+
+with st.expander("🔍 Preview Data"):
+    st.dataframe(filtered_df.head(20))
+
+csv_buffer = io.StringIO()
+filtered_df.to_csv(csv_buffer, index=False)
+st.download_button(
+    label="⬇️ Download Filtered Data as CSV",
+    data=csv_buffer.getvalue(),
+    file_name="filtered_data.csv",
+    mime="text/csv"
+)
