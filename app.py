@@ -3,7 +3,11 @@ import pandas as pd
 import plotly.express as px
 import io
 
-st.set_page_config(page_title="Universal EDA Explorer", layout="centered")
+st.set_page_config(
+    page_title="Universal EDA Explorer",
+    layout="centered",
+    initial_sidebar_state="expanded"  # This makes the sidebar shown by default
+)
 
 # Performance: cache file reading
 @st.cache_data
